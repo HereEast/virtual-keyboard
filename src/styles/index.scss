@@ -31,6 +31,27 @@
     justify-content: center;
 }
 
+.intro__container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.intro__container .description {
+    font-size: 18px;
+    text-align: center;
+}
+
+.description span {
+    background-color: #d3eeff;
+    border-radius: 5px;
+    border: 1px solid var(--color);
+    color: #59b7f1;
+    font-size: 16px;
+    padding: 0px 5px;
+}
+
 .textarea__container {
     width: 100%;
     height: 160px;
