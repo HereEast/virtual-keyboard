@@ -6,6 +6,8 @@ import { toggleKeyHighlight } from "./js/keys.js";
 
 export const { body } = document;
 
+alert("Привет! \nНе доделала немного проект, буду благодарна, если дашь мне время и подождешь с проверкой до четверга. \nСпасибо ʕ •ᴥ•ʔ");
+
 let lang = "en";
 
 createDOMStructure();
