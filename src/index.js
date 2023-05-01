@@ -15,7 +15,6 @@ const keyboard = document.querySelector(".keyboard");
 const textarea = document.querySelector(".textarea");
 
 const shiftButtons = Array.from(document.querySelectorAll(".key__shift"));
-const commandButtons = Array.from(document.querySelectorAll(".key__cmd"));
 const capsButton = getButtonByCode("CapsLock");
 const ctrlButton = getButtonByCode("ControlLeft");
 
@@ -29,7 +28,6 @@ let currentCode;
 let capsActive = false;
 let shiftActive = false;
 let ctrActive = false;
-let commandActive = false;
 
 //
 
@@ -49,25 +47,19 @@ shiftButtons.forEach((shiftButton) => {
     shiftButton.addEventListener("mouseup", toggleShiftOnClick);
 });
 
-commandButtons.forEach((commandButton) => {
-    commandButton.addEventListener("mousedown", toggleCommand);
-    commandButton.addEventListener("mouseup", toggleCommand);
-});
-
 ctrlButton.addEventListener("mousedown", toggleCtrl);
 ctrlButton.addEventListener("mouseup", toggleCtrl);
+
 
 // INPUT
 function handleInput() {
     capsActive = capsButton.classList.contains("key--active");
     shiftActive = shiftButtons.some((button) => button.classList.contains("key--active"));
-    commandActive = commandButtons.some((button) => button.classList.contains("key--active"));
 
     if (capsActive) {
         const button = getButtonByCode(currentCode);
         const key = getKey(button).toUpperCase();
 
-        // updateCursorPosition(0);
         addSubstring(key);
     }
 
@@ -80,7 +72,6 @@ function handleInput() {
         if (button.dataset[lang]) key = button.dataset[attr];
         else return;
 
-        // updateCursorPosition(0);
         addSubstring(key);
     }
 }
@@ -115,6 +106,7 @@ function handleClick(e) {
     string = textarea.value;
 }
 
+
 // KEYDOWN
 function handleKeydown(e) {
     currentCode = e.code;
@@ -138,12 +130,9 @@ function handleKeydown(e) {
         shiftActive = true;
     }
 
-    if (e.code === "MetaLeft" || e.code === "MetaRight") {
-        commandActive = true;
-    }
-
     toggleKeyHighlight(e);
 }
+
 
 // KEYUP
 function handleKeyup(e) {
@@ -151,9 +140,6 @@ function handleKeyup(e) {
     if (e.code === "ControlLeft") toggleCtrl(e);
 
     shiftActive = false;
-    commandActive = false;
-
-    console.log(e.code);
 
     string = textarea.value;
     cursorPos = textarea.selectionStart;
@@ -161,20 +147,6 @@ function handleKeyup(e) {
     toggleKeyHighlight(e);
 }
 
-// COMMAND
-function toggleCommand(e) {
-    const commandButton = e.target.closest(".key__cmd");
-
-    if (e.type === "mousedown") {
-        commandButton.classList.add("key--active");
-        commandActive = true;
-    }
-
-    if (e.type === "mouseup") {
-        commandButton.classList.remove("key--active");
-        commandActive = false;
-    }
-}
 
 // ARROWS
 function handleArrows() {
@@ -189,9 +161,9 @@ function handleArrows() {
     }
 }
 
+
 // ADD CHAR TO TEXTAREA
 function addSubstring(substr) {
-    // setCursorPosition();
     updateCursorPosition(0);
 
     const prevString = string.slice(0, cursorPos);
@@ -201,6 +173,7 @@ function addSubstring(substr) {
     updateCursorPosition(substr.length);
 }
 
+
 // UPDATE CURSOR POS
 function updateCursorPosition(steps) {
     textarea.selectionStart = cursorPos + steps;
@@ -208,11 +181,13 @@ function updateCursorPosition(steps) {
     cursorPos = textarea.selectionStart;
 }
 
+
 // SET CURSOR POS
 function setCursorPosition() {
     cursorPos = textarea.selectionStart;
     textarea.selectionStart = cursorPos;
 }
+
 
 // DELETE PREV
 function deletePrevChar() {
@@ -226,6 +201,7 @@ function deletePrevChar() {
     updateCursorPosition(-1);
 }
 
+
 // DELETE NEXT
 function deleteNextChar(e) {
     e.preventDefault();
@@ -238,6 +214,7 @@ function deleteNextChar(e) {
     updateCursorPosition(0);
 }
 
+
 // TOGGLE CAPS
 function toggleCaps(e) {
     e.preventDefault();
@@ -247,6 +224,7 @@ function toggleCaps(e) {
     if (capsButton.classList.contains("key--active")) capsActive = true;
     else capsActive = false;
 }
+
 
 // TOGGLE SHIFT
 function toggleShiftOnClick(e) {
@@ -262,6 +240,7 @@ function toggleShiftOnClick(e) {
         shiftActive = false;
     }
 }
+
 
 // TOGGLE CTRL
 function toggleCtrl(e) {
