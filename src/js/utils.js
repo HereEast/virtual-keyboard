@@ -19,6 +19,8 @@ function createElement(tagName, className) {
 function createDOMStructure() {
     const text = `This keyboard was created for Mac OS. <br> To delete prev character use <span>DELETE</span>, to delete next — <span>CTRL + D</span> <br>To switch languages use <span>CTRL + CMD</span>`;
 
+    const PRtext = `Here is a link to <a target="_blank" href="https://github.com/HereEast/virtual-keyboard/pull/2">Pull Request</a>. Sorry:)`;
+
     const page = createElement("div", "page");
     const main = createElement("main", "main");
     const introContainer = createElement("div", "intro__container");
@@ -30,11 +32,14 @@ function createDOMStructure() {
     const description = createElement("p", "description");
     description.innerHTML = text;
 
+    const note = createElement("p", "note");
+    note.innerHTML = PRtext;
+
     introContainer.append(description);
 
     textareaContainer.append(textarea);
     keyboard.append(keyboardContainer);
-    main.append(introContainer, textareaContainer, keyboard);
+    main.append(introContainer, textareaContainer, keyboard, note);
     page.append(main);
     body.prepend(page);
 }
