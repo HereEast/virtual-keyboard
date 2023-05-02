@@ -1,5 +1,5 @@
 import { createElement } from "./utils.js";
-export { applyCssClasses, getLabel, getArrowButtons, toggleKeyHighlight };
+export { applyClasses, getLabel, getArrowButtons, toggleHighlight };
 
 
 // CLASSES
@@ -9,13 +9,13 @@ const cssClasses = {
     MetaLeft: "key__cmd--left",
     MetaRight: "key__cmd--right",
     CapsLock: "key__caps",
-    Enter: "key__return",
-    ShiftLeft: "key__shift--left",
-    ShiftRight: "key__shift--right",
+    Enter: ["key__return", "label--small"],
+    ShiftLeft: ["key__shift--left", "key__shift"],
+    ShiftRight: ["key__shift--right", "key__shift"],
     Space: "key__space",
     Fn: "key__fn",
-    AltLeft: "key__opt",
-    AltRight: "key__opt",
+    AltLeft: ["key__opt", "key__opt--left"],
+    AltRight: ["key__opt", "key__opt--right"],
     ControlLeft: "key__ctrl",
     ArrowLeft: "key__arrow",
     ArrowUp: "key__arrow",
@@ -26,7 +26,7 @@ const cssClasses = {
 //
 
 // HIGHLIGHT KEYS
-function toggleKeyHighlight(e) {
+function toggleHighlight(e) {
     const selector = `[data-code=${e.code}]`;
     const button = document.querySelector(selector);
 
@@ -54,20 +54,16 @@ function getLabel(data, lang) {
 }
 
 // APPLY CSS CLASSES
-function applyCssClasses(button) {
+function applyClasses(button) {
     const code = button.dataset.code;
     const buttonClass = cssClasses[code];
 
     if (buttonClass) {
-        button.classList.add(buttonClass, "label--small");
-    }
-
-    if (button.classList.contains("key__shift--left") || button.classList.contains("key__shift--right")) {
-        button.classList.add("key__shift");
-    }
-
-    if (button.classList.contains("key__cmd--left") || button.classList.contains("key__cmd--right")) {
-        button.classList.add("key__cmd");
+        if (Array.isArray(buttonClass)) {
+            button.classList.add(...buttonClass, "label--small");
+        } else {
+           button.classList.add(buttonClass, "label--small"); 
+        }
     }
 }
 
