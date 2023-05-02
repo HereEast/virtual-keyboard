@@ -1,8 +1,9 @@
 import { keyData } from "./data.js";
 import { createElement } from "./utils.js";
-import { applyCssClasses, getLabel, getArrowButtons } from "./keys.js";
+import { applyClasses, getLabel, getArrowButtons } from "./keys.js";
 export { createKeyboard };
 
+// KEYBOARD
 class Keyboard {
     constructor(lang) {
         this.lang = lang;
@@ -29,7 +30,12 @@ class Keyboard {
                 button.dataset.shiftRu = data.shift.ru;
             }
 
-            applyCssClasses(button);
+            if (data.alt) {
+                button.dataset.altEn = data.alt.en;
+                button.dataset.altRu = data.alt.ru;
+            }
+
+            applyClasses(button);
 
             const labelElement = createElement("span", "label");
             labelElement.textContent = label.toUpperCase();
@@ -43,7 +49,7 @@ class Keyboard {
     }
 }
 
-// Create keyboard
+// CREATE KEYBOARD
 function createKeyboard(lang) {
     const keyboard = new Keyboard(lang);
     keyboard.create();
