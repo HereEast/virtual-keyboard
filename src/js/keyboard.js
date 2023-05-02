@@ -54,3 +54,8 @@ function createKeyboard(lang) {
     const keyboard = new Keyboard(lang);
     keyboard.create();
 }
+
+
+
+
+
