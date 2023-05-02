@@ -4,6 +4,8 @@
     --color: #87cefa;
     --black: #121212;
     --white: #ffffff;
+    --keyboard: #5b5b5b;
+    --back: #191919;
     --small-font-size: 12px;
     --radius: 8px;
 }
@@ -20,6 +22,8 @@
     height: 100vh;
     display: flex;
     justify-content: center;
+    background-color: #fafafa;
+    background-color: var(--back);
 }
 
 .main {
@@ -31,6 +35,7 @@
     justify-content: center;
 }
 
+
 .intro__container {
     width: 100%;
     display: flex;
@@ -39,16 +44,19 @@
 }
 
 .intro__container .description {
-    font-size: 18px;
+    font-size: 20px;
+    font-weight: 300;
     text-align: center;
+    color: var(--white);
 }
 
 .description span {
-    background-color: #d3eeff;
     border-radius: 5px;
-    border: 1px solid var(--color);
-    color: #59b7f1;
-    font-size: 16px;
+    border: 1.5px solid var(--color);
+    color: var(--color);
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0.02ch;
     padding: 0px 5px;
 }
 
@@ -63,6 +71,7 @@
     height: 100%;
     border: 1px solid var(--black);
     border-radius: 20px;
+    background-color: var(--white);
 
     padding: 15px 20px;
     margin-bottom: 20px;
@@ -72,11 +81,6 @@
     font-family: "Inter", sans-serif;
     font-size: 20px;
     color: var(--black);
-}
-
-.textarea:focus {
-    border: 1px solid var(--color);
-    box-shadow: 0px 0px 4px var(--color);
 }
 
 .keyboard {
@@ -95,6 +99,8 @@
     border: 1px solid var(--black);
     border-radius: 20px;
     padding: 20px;
+
+    background-color: var(--keyboard);
 }
 
 .key {
@@ -106,7 +112,7 @@
     outline: none;
     border: 1px solid var(--black);
     border-radius: 8px;
-    background-color: var(--white);
+    background-color: var(--keyboard);
     padding: 6px;
 
     font-family: Arial, Helvetica, sans-serif;
@@ -120,18 +126,20 @@
 
 .key:hover {
     border: 1px solid var(--color);
-    box-shadow: 0px 0px 4px var(--color);
+    box-shadow: 0px 0px 6px var(--color);
 }
 
 .key:active {
     background-color: var(--color);
     box-shadow: none;
+    transform: scale(0.98);
 }
 
 .key--active {
     background-color: var(--color);
     border: 1px solid var(--color);
     box-shadow: none;
+    transform: scale(0.98);
 }
 
 .key__delete {
