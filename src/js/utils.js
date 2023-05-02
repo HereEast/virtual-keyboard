@@ -8,16 +8,16 @@ function getButtonByCode(code) {
 }
 
 // CREATE ELEMENT
-function createElement(tagName, ...classNames) {
+function createElement(tagName, className) {
     const element = document.createElement(tagName);
-    element.classList.add(...classNames);
+    element.classList.add(className);
 
     return element;
 }
 
 // DOM
 function createDOMStructure() {
-    const text = `This keyboard was created for Mac OS. <br> To delete prev character use <span>DELETE</span>, to delete next character use <span>CTRL + D</span>`;
+    const text = `This keyboard was created for Mac OS. <br> To delete prev character use <span>DELETE</span>, to delete next — <span>CTRL + D</span> <br>To switch languages use <span>CTRL + CMD</span>`;
 
     const page = createElement("div", "page");
     const main = createElement("main", "main");
