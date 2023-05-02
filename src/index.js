@@ -61,7 +61,6 @@ ctrlButton.addEventListener("mouseup", toggleCtrl);
 //
 //
 
-
 // CLICK
 function handleClick(e) {
     const button = e.target.closest("button");
@@ -87,7 +86,6 @@ function handleClick(e) {
 
     addChar();
 }
-
 
 // KEYDOWN
 function handleKeydown(e) {
@@ -130,7 +128,6 @@ function handleKeydown(e) {
     toggleHighlight(e);
 }
 
-
 // KEYUP
 function handleKeyup(e) {
     if (e.code === "ControlLeft") {
@@ -152,7 +149,6 @@ function handleKeyup(e) {
     toggleHighlight(e);
 }
 
-
 // ADD CHAR
 function addChar() {
     const button = getButtonByCode(currentCode);
@@ -166,7 +162,6 @@ function addChar() {
 
     updateCursorPosition(key.length);
 }
-
 
 // TOGGLE LANG
 function switchLanguage() {
@@ -185,7 +180,6 @@ function switchLanguage() {
     });
 }
 
-
 // TOGGLE CAPS
 function toggleCaps(e) {
     e.preventDefault();
@@ -198,7 +192,6 @@ function toggleCaps(e) {
         capsActive = true;
     }
 }
-
 
 // TOGGLE SHIFT
 function toggleShift(e) {
@@ -221,7 +214,6 @@ function toggleShift(e) {
     }
 }
 
-
 // TOGGLE OPT
 function toggleOpt(e) {
     let optButton;
@@ -243,7 +235,6 @@ function toggleOpt(e) {
     }
 }
 
-
 // TOGGLE CTRL
 function toggleCtrl(e) {
     if (e.type === "mousedown" || e.type === "keydown") {
@@ -256,7 +247,6 @@ function toggleCtrl(e) {
         ctrActive = false;
     }
 }
-
 
 // DELETE PREV
 function deletePrevChar() {
@@ -272,7 +262,6 @@ function deletePrevChar() {
     updateCursorPosition(-1);
 }
 
-
 // DELETE NEXT
 function deleteNextChar() {
     const idx = cursorPos;
@@ -287,7 +276,6 @@ function deleteNextChar() {
     updateCursorPosition(0);
 }
 
-
 // UPDATE CURSOR POS
 function updateCursorPosition(steps) {
     textarea.selectionStart = cursorPos + steps;
@@ -295,13 +283,11 @@ function updateCursorPosition(steps) {
     cursorPos = textarea.selectionStart;
 }
 
-
 // SET CURSOR POS
 function setCursorPosition() {
     cursorPos = textarea.selectionStart;
     textarea.selectionStart = cursorPos;
 }
-
 
 // GET KEY
 function getKey(button) {
