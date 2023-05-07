@@ -18,7 +18,7 @@ function createElement(tagName, className) {
 
 // DOM
 function createDOMStructure() {
-  const text = "This keyboard was created for Mac OS. <br> To delete prev character use <span>DELETE</span>, to delete next — <span>CTRL + D</span> <br>To switch languages use <span>CTRL + CMD</span>";
+  const text = "🌸🌸🌸 This keyboard was created for Mac OS. <br> To delete prev character use <span>DELETE</span>, to delete next — <span>CTRL + D</span> <br>To switch languages use <span>CTRL + CMD</span>";
 
   const PRtext = "Here is a link to <a target='_blank' href='https://github.com/HereEast/virtual-keyboard/pull/2'>Pull Request</a>. Sorry:)";
 
